@@ -70,6 +70,54 @@ FROM bronze.crm_prd_info;
 
 
 
+-- Building silver layer cleaning & loading for sales details
+--insert into silver layer
+
+
+
+INSERT INTO silver.crm_sales_details (
+    sls_ord_num,
+    sls_prd_key,
+    sls_cust_id,
+    sls_order_dt,
+    sls_ship_dt,
+    sls_due_dt,
+    sls_sales,
+    sls_quantity, 
+    sls_price    
+ 
+)
+
+
+select  
+    sls_ord_num, 
+    sls_prd_key,
+    sls_cust_id,
+    case when sls_order_dt = 0 or LEN(sls_order_dt) != 8 then NULL
+            else  CAST(CAST(sls_order_dt AS VARCHAR)AS DATE) 
+    end as sls_order_dt,
+       case when sls_ship_dt = 0 or LEN(sls_ship_dt) != 8 then NULL
+            else  CAST(CAST(sls_ship_dt AS VARCHAR)AS DATE) 
+    end as sls_ship_dt,
+       case when sls_due_dt = 0 or LEN(sls_due_dt) != 8 then NULL
+            else  CAST(CAST(sls_due_dt AS VARCHAR)AS DATE) 
+    end as sls_due_dt,
+
+        case when sls_sales = 0 or sls_sales <=0 or sls_sales is null or sls_sales != sls_price * sls_quantity
+            then sls_quantity * ABS(sls_price)
+            else ABS(sls_sales)
+    end as sls_sales,
+  
+sls_quantity,
+
+    CASE WHEN sls_price is null then sls_sales / sls_quantity
+         ELSE ABS(sls_price)
+    END as sls_price
+from bronze.crm_sales_details;
+
+
+
+
 
 
 
