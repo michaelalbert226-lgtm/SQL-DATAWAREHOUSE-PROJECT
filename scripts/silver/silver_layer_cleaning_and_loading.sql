@@ -116,6 +116,24 @@ sls_quantity,
 from bronze.crm_sales_details;
 
 
+-- Building silver layer cleaning & loading for silver.erp_cust_az12
+--insert into silver layer
+
+
+insert into silver.erp_cust_az12 (cid, bdate, gen)
+
+SELECT 
+CASE 
+    WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid))
+    ELSE cid 
+END cid,
+case when bdate > GETDATE() then NULL else bdate end as bdate,
+case when UPPER(TRIM(gen)) in ('F', 'FEMALE') then 'Female'
+        when UPPER(TRIM(gen)) in ('M', 'MALE') then 'Male'
+        else 'n/a'
+end as gen 
+from bronze.erp_cust_az12;
+
 
 
 
