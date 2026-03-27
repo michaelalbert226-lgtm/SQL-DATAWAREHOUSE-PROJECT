@@ -23,7 +23,7 @@ The data warehouse is structured using the Medallion Architecture:
 
 ## 📊 Data Architecture Diagram
 
-![Architecture](docs/diagrams/architecture.png)
+![Architecture](docs/diagrams/Bronze_layer_diagram.drawio.png)
 
 ---
 
