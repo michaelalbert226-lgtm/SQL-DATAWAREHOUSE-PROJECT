@@ -33,6 +33,12 @@ The data warehouse is structured using the Medallion Architecture:
 
 ---
 
+## 🗃️ Data Integration 
+
+![Date integration](docs/diagrams/data_integration.png)
+
+---
+
 ## 📂 Project Structure
 
 SQL-DATAWAREHOUSE-PROJECT
