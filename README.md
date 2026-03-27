@@ -90,8 +90,7 @@ erDiagram
 
 A detailed data catalog has been created to document all tables and columns in the Gold layer.
 
-[Location:]
-(docs/data_catalogue.md)
+[Location:](docs/data_catalogue.md)
 
 The data catalog includes:
 - Column names  
@@ -121,8 +120,8 @@ These checks include:
 - **Data Standardization Checks**  
   Validating cleaned values such as gender, country, and product categories.
 
-Location:
-tests/quality_tests_gold.sql
+[Location for gold test:](tests/quality_tests_gold.sql)
+[Location for silver test:](tests/quality_test_silver.sql)
 
 ---
 
