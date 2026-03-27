@@ -35,8 +35,10 @@ The data warehouse is structured using the Medallion Architecture:
 
 ## 📂 Project Structure
 
-SQL-DATAWAREHOUSE-PROJECT/
-│
+SQL-DATAWAREHOUSE-PROJECT
+
+
+
 ├── datasets/        # Raw datasets used for the project  
 ├── scripts/         # SQL scripts for transformations (bronze → silver → gold)  
 ├── tests/           # Data quality checks and validation queries  
@@ -88,8 +90,8 @@ erDiagram
 
 A detailed data catalog has been created to document all tables and columns in the Gold layer.
 
-Location:
-docs/data_catalogue.md
+[Location:]
+(docs/data_catalogue.md)
 
 The data catalog includes:
 - Column names  
