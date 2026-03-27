@@ -29,7 +29,7 @@ The data warehouse is structured using the Medallion Architecture:
 
 ## 🔄 Data Flow
 
-![Data Flow](docs/diagrams/data_flow.png)
+![Data Flow](docs/diagrams/Data_flow.png)
 
 ---
 
