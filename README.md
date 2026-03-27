@@ -1,96 +1,196 @@
-# SQL-DATAWAREHOUSE-PROJECT
-This repository contains my SQL practice, queries, and data engineering learning projects.
-# Data Warehouse and Analytics Project
+# 📊 SQL Data Warehouse Project
 
-Welcome to the **Data Warehouse and Analytics Project** repository! 🚀  
-This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+## 🚀 Overview
+This project demonstrates the design and implementation of an end-to-end data warehouse solution using SQL. It follows the Medallion Architecture (Bronze → Silver → Gold) to transform raw data into clean, structured, and business-ready data for analytics.
 
----
-## 🏗️ Data Architecture
-
-The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
-[Data Architecture](docs/Bronze_layer_diagram.drawio.png)  
-
-1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into SQL Server Database.
-2. **Silver Layer**: This layer includes data cleansing, standardization, and normalization processes to prepare data for analysis.
-3. **Gold Layer**: Houses business-ready data modeled into a star schema required for reporting and analytics.
-
----
-## 📖 Project Overview
-
-This project involves:
-
-1. **Data Architecture**: Designing a Modern Data Warehouse Using Medallion Architecture **Bronze**, **Silver**, and **Gold** layers.
-2. **ETL Pipelines**: Extracting, transforming, and loading data from source systems into the warehouse.
-3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
-4. **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
-
-
+The project showcases key data engineering concepts including data ingestion, transformation, data modeling, data quality validation, and documentation.
 
 ---
 
-## 🚀 Project Requirements
+## 🏗️ Architecture
+The data warehouse is structured using the Medallion Architecture:
 
-### Building the Data Warehouse (Data Engineering)
+- **Bronze Layer**  
+  Raw data ingested directly from source systems with minimal transformation.
 
-#### Objective
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
+- **Silver Layer**  
+  Cleaned, standardized, and validated data to ensure consistency and quality.
 
-#### Specifications
-- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
-- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
-- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
-- **Scope**: Focus on the latest dataset only; historization of data is not required.
-- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+- **Gold Layer**  
+  Business-ready data models optimized for analytics and reporting.
 
 ---
 
-### BI: Analytics & Reporting (Data Analysis)
+## 📊 Data Architecture Diagram
 
-#### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
-- **Product Performance**
-- **Sales Trends**
+![Architecture](docs/diagrams/architecture.png)
 
-These insights empower stakeholders with key business metrics, enabling strategic decision-making.  
+---
 
-For more details, refer to [docs/requirements.md](docs/requirements.md).
+## 🔄 Data Flow
 
-## 📂 Repository Structure
+![Data Flow](docs/diagrams/data_flow.png)
+
+---
+
+## 📂 Project Structure
+
+SQL-DATAWAREHOUSE-PROJECT/
+│
+├── datasets/        # Raw datasets used for the project  
+├── scripts/         # SQL scripts for transformations (bronze → silver → gold)  
+├── tests/           # Data quality checks and validation queries  
+├── docs/            # Documentation (data catalog, diagrams)  
+├── README.md        # Project overview  
+└── LICENSE  
+
+---
+
+## ⭐ Data Model (Star Schema)
+
+The Gold layer is designed using a star schema to support analytical queries efficiently.
+
+- **Fact Table**
+  - `gold.fact_sales` → Stores transactional sales data
+
+- **Dimension Tables**
+  - `gold.dim_customers` → Customer information  
+  - `gold.dim_products` → Product details  
+
+### Star Schema Diagram
+
+```mermaid
+erDiagram
+    FACT_SALES {
+        int order_number
+        int product_key
+        int customer_key
+    }
+
+    DIM_CUSTOMERS {
+        int customer_key
+        string first_name
+        string last_name
+    }
+
+    DIM_PRODUCTS {
+        int product_key
+        string product_name
+    }
+
+    FACT_SALES }o--|| DIM_CUSTOMERS : customer_key
+    FACT_SALES }o--|| DIM_PRODUCTS : product_key
 ```
-data-warehouse-project/
-│
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
-│
-├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
-│
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
-│
-├── tests/                              # Test scripts and quality files
-│
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
-```
+
+
+
+## 📘 Data Catalog
+
+A detailed data catalog has been created to document all tables and columns in the Gold layer.
+
+Location:
+docs/data_catalogue.md
+
+The data catalog includes:
+- Column names  
+- Data types  
+- Business definitions  
+- Table-level descriptions  
+
+This ensures clarity, consistency, and usability for both technical and non-technical stakeholders.
+
 ---
 
+## ✅ Data Quality Checks
 
+To ensure data reliability and integrity, a set of data quality validation checks has been implemented.
 
-## 🛡️ License
+These checks include:
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
+- **Duplicate Checks**  
+  Ensuring no duplicate records exist in primary or business keys.
 
+- **Null Value Checks**  
+  Validating that critical fields (e.g., customer_key, product_key) do not contain NULL values.
 
+- **Referential Integrity Checks**  
+  Ensuring all foreign keys in the fact table correctly map to dimension tables.
 
+- **Data Standardization Checks**  
+  Validating cleaned values such as gender, country, and product categories.
 
+Location:
+tests/quality_tests_gold.sql
+
+---
+
+## 💼 Business Use Case
+
+This project simulates a retail data warehouse designed to support business intelligence and analytics.
+
+It enables organizations to:
+
+- Analyze customer demographics and behavior  
+- Track product performance across categories  
+- Monitor sales trends over time  
+- Improve decision-making through structured data  
+
+The Gold layer provides a clean and reliable foundation for reporting tools and dashboards.
+
+---
+
+## 🛠️ Tools & Technologies
+
+The following tools and technologies were used:
+
+- **SQL (T-SQL)** → Data transformation and modeling  
+- **Microsoft SQL Server** → Database management system  
+- **Git & GitHub** → Version control and project documentation  
+
+---
+
+## 📈 Key Features
+
+- End-to-end data warehouse implementation  
+- Medallion architecture (Bronze, Silver, Gold layers)  
+- Dimensional modeling using star schema  
+- Data quality validation framework  
+- Structured and documented data catalog  
+
+---
+
+## 🎯 What This Project Demonstrates
+
+This project demonstrates my ability to:
+
+- Design and implement scalable data warehouse architectures  
+- Transform raw data into business-ready datasets  
+- Apply best practices in data modeling (fact & dimension tables)  
+- Write efficient, clean, and maintainable SQL queries  
+- Ensure data quality and consistency  
+- Document data systems effectively  
+
+---
+
+## 🔮 Future Improvements
+
+Planned enhancements for this project include:
+
+- Integration with BI tools (Power BI or Tableau) for visualization  
+- Implementation of incremental data loading strategies  
+- Pipeline orchestration using tools like Apache Airflow  
+- Automation of data quality monitoring  
+- Performance optimization for large-scale datasets  
+
+---
+
+## 👤 Author
+
+**Michael Adamu Egietsemeh**  
+Data Analyst | Aspiring Data Engineer  
+
+---
+
+## ⭐ Notes
+
+This project is part of my data engineering learning journey and reflects practical implementation of modern data warehouse design principles.
