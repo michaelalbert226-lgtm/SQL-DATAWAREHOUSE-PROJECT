@@ -90,6 +90,7 @@ erDiagram
     FACT_SALES }o--|| DIM_PRODUCTS : product_key
 ```
 
+[Sales Mart Data: Star schema](docs/diagrams/sales_mart.drawio.png)
 
 
 ## 📘 Data Catalog
@@ -194,7 +195,7 @@ Planned enhancements for this project include:
 ## 👤 Author
 
 **Michael Adamu Egietsemeh**  
-Data Analyst | Aspiring Data Engineer  
+Data Analyst transitioning into Data Engineering with hands-on experience building SQL-based data warehouses using Medallion Architecture  
 
 ---
 
