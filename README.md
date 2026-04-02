@@ -18,11 +18,32 @@ The solution simulates a real-world retail environment by integrating data from 
 
 ---
 
-## 🏗️ Architecture Diagram
+## 🏗️ Data Architecture 
+The data warehouse is structured using the Medallion Architecture:
+* **Bronze Layer:** Raw data ingested directly from the source systems with minimal transformation.
+* **Silver Layer:** Cleaned, standardized, and validated data to ensure consistency and quality.
+* **Gold Layer:** Business-ready data models optimized for analytics and reporting.
+‎
 
 ‎![Architecture](docs/diagrams/Bronze_layer_diagram.drawio.png)
 
 ---
+
+## 🔁 Data Flow
+* Data is extracted from CRM & ERP systems
+* Loaded into bronze layer tables
+* Transformed and validated in Silver layer
+* Modeled into fact and dimension tables in Gold layer
+
+‎![Data Flow](docs/diagrams/Data_flow.png)
+‎
+‎---
+‎
+## 🗃️ Data integration 
+
+‎![Date integration](docs/diagrams/data_integration.png)
+‎
+‎---
 
 ## 🗂️ Project Structure
 
