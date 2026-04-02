@@ -82,6 +82,7 @@ SQL-DATAWAREHOUSE-PROJECT/
 
 ## 🧱 Data Model (Star Schema)
 The Gold layer is designed using a star schema:
+‎[Sales Mart Data](docs/diagrams/sales_mart.drawio.png)
 ‎
 ### Fact Table
 ‎
@@ -94,10 +95,47 @@ The Gold layer is designed using a star schema:
 ‎
 ‎This structure enables efficient querying and reporting.
 
-### Star Schema diagram 
-!‎[Sales Mart Data](docs/diagrams/sales_mart.drawio.png)
-
 ---
+
+## 📘 Data Catalog
+‎
+‎A detailed data catalog has been created to document all tables and columns in the Gold layer.
+‎
+‎[Data catalogue:](docs/data_catalogue.md)
+‎
+‎The data catalog includes:
+‎- Column names  
+‎- Data types  
+‎- Business definitions  
+‎- Table-level descriptions  
+‎
+‎This ensures clarity, consistency, and usability for both technical and non-technical stakeholders.
+
+‎
+---
+‎
+### ✅  Data quality Checks
+‎
+‎To ensure data reliability and integrity, a set of data quality validation checks has been implemented.
+‎
+‎These checks include:
+‎
+‎- **Duplicate Checks**  
+‎  Ensuring no duplicate records exist in primary or business keys.
+‎
+‎- **Null Value Checks**  
+‎  Validating that critical fields (e.g., customer_key, product_key) do not contain NULL values.
+‎
+‎- **Referential Integrity Checks**  
+‎  Ensuring all foreign keys in the fact table correctly map to dimension tables.
+‎
+‎- **Data Standardization Checks**  
+‎  Validating cleaned values such as gender, country, and product categories.
+‎
+‎[gold test:](tests/quality_tests_gold.sql)
+‎[silver test:](tests/quality_test_silver.sql)
+‎
+‎---
 
 ## 📊 Sample Results
 
@@ -127,7 +165,7 @@ GROUP BY customer_key;
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/SQL-DATAWAREHOUSE-PROJECT.git
+git clone https://github.com/michaelalbert226/SQL-DATAWAREHOUSE-PROJECT.git
 ```
 
 2. Load raw datasets into SQL Server
