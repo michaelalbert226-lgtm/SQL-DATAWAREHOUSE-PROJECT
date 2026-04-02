@@ -20,14 +20,7 @@ The solution simulates a real-world retail environment by integrating data from 
 
 ## 🏗️ Architecture Diagram
 
-```mermaid
-flowchart LR
-    A[CRM System] --> B[Bronze Layer]
-    C[ERP System] --> B
-    B --> D[Silver Layer]
-    D --> E[Gold Layer]
-    E --> F[BI / Analytics]
-```
+‎![Architecture](docs/diagrams/Bronze_layer_diagram.drawio.png)
 
 ---
 
