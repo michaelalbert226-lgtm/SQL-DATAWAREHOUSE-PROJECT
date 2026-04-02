@@ -165,7 +165,7 @@ GROUP BY customer_key;
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/michaelalbert226/SQL-DATAWAREHOUSE-PROJECT.git
+git clone https://github.com/michaelalbert226-lgtm/SQL-DATAWAREHOUSE-PROJECT.git
 ```
 
 2. Load raw datasets into SQL Server
