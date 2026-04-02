@@ -81,31 +81,21 @@ SQL-DATAWAREHOUSE-PROJECT/
 ---
 
 ## 🧱 Data Model (Star Schema)
+The Gold layer is designed using a star schema:
+‎
+### Fact Table
+‎
+* `gold.fact_sales` → Stores transactional sales data
+‎
+### Dimension Tables
+‎
+* `gold.dim_customers` → Customer information
+* `gold.dim_products` → Product details
+‎
+‎This structure enables efficient querying and reporting.
 
-```mermaid
-erDiagram
-    FACT_SALES ||--o{ DIM_CUSTOMERS : has
-    FACT_SALES ||--o{ DIM_PRODUCTS : has
-
-    FACT_SALES {
-        int sales_key
-        int customer_key
-        int product_key
-        float sales_amount
-    }
-
-    DIM_CUSTOMERS {
-        int customer_key
-        string name
-        string location
-    }
-
-    DIM_PRODUCTS {
-        int product_key
-        string product_name
-        string category
-    }
-```
+### Star Schema diagram 
+!‎[Sales Mart Data](docs/diagrams/sales_mart.drawio.png)
 
 ---
 
