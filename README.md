@@ -98,16 +98,17 @@ The Gold layer is designed using a star schema:
 ---
 
 ## 📘 Data Catalog
+A detailed data catalog has been created to document all tables and columns in the Gold layer.
+
+‎* [Data catalogue:](docs/data_catalogue.md)
+
+
 ‎
-‎A detailed data catalog has been created to document all tables and columns in the Gold layer.
-‎
-‎[Data catalogue:](docs/data_catalogue.md)
-‎
-‎The data catalog includes:
-‎- Column names  
-‎- Data types  
-‎- Business definitions  
-‎- Table-level descriptions  
+The data catalog includes:
+* column names
+* Data types
+* Business definitions
+* Table-level descriptions 
 ‎
 ‎This ensures clarity, consistency, and usability for both technical and non-technical stakeholders.
 
@@ -115,27 +116,25 @@ The Gold layer is designed using a star schema:
 ---
 ‎
 ### ✅  Data quality Checks
-‎
 ‎To ensure data reliability and integrity, a set of data quality validation checks has been implemented.
 ‎
-‎These checks include:
+These checks include:
+* **Duplicate checks**
+Ensuring no duplicate records exist in primary or business key.
+
+* **Null Value Checks**
+validating that critical Fields (e.g customer_key, product_key) do not contain NULL values.
+
+* **Referential Integrity Checks**
+Ensuring all foreign keys in the fact table correctly map to dimension tables.
 ‎
-‎- **Duplicate Checks**  
-‎  Ensuring no duplicate records exist in primary or business keys.
-‎
-‎- **Null Value Checks**  
-‎  Validating that critical fields (e.g., customer_key, product_key) do not contain NULL values.
-‎
-‎- **Referential Integrity Checks**  
-‎  Ensuring all foreign keys in the fact table correctly map to dimension tables.
-‎
-‎- **Data Standardization Checks**  
-‎  Validating cleaned values such as gender, country, and product categories.
-‎
-‎[gold test:](tests/quality_tests_gold.sql)
+* **Data Standardization Checks**
+Validating cleaned values such as gender, country, and product categories.
+
+ ‎[gold test:](tests/quality_tests_gold.sql)
+
 ‎[silver test:](tests/quality_test_silver.sql)
-‎
-‎---
+‎--- 
 
 ## 📊 Sample Results
 
