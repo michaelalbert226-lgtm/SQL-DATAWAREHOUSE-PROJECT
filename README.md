@@ -134,7 +134,8 @@ Validating cleaned values such as gender, country, and product categories.
  ‎[gold test:](tests/quality_tests_gold.sql)
 
 ‎[silver test:](tests/quality_test_silver.sql)
-‎--- 
+
+---
 
 ## 📊 Sample Results
 
