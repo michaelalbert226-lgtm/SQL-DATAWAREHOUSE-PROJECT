@@ -36,14 +36,19 @@ The data warehouse is structured using the Medallion Architecture:
 * Modeled into fact and dimension tables in Gold layer
 
 ‎![Data Flow](docs/diagrams/Data_flow.png)
+
 ‎
-‎---
+---
 ‎
-## 🗃️ Data integration 
+## 🗃️ Data integration
+This project integrates multiple datasets:
+* **CRM system** → Customer and sales data
+* **ERP system** → product and location data
+These datasets are joined and transformed to produce a unified analytical model.
 
 ‎![Date integration](docs/diagrams/data_integration.png)
-‎
-‎---
+
+---
 
 ## 🗂️ Project Structure
 
